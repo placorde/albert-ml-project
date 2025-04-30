@@ -2,7 +2,7 @@
 
 Bookmatch est une interface ayant pour but que chaque personne trouve son prochain livre. 
 
-En effet, on constate sur ses dernières années que le nombre de lecteur en France est en baisse. Une des difficultés majeures pour commencer un livre, c'est d'y trouver son compte parmis la multitude de choix. 
+En effet, on constate sur ces dernières années que le nombre de lecteur en France est en baisse. Une des difficultés majeures pour commencer un livre, c'est d'y trouver son compte parmi la multitude de choix. 
 C'est pourquoi Bookmatch permet à son utilisateur, en fonction de critères personnalisés de trouver LE livre qui lui correspond. 
 
 
