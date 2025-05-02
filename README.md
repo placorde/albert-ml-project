@@ -12,6 +12,17 @@ C'est pourquoi Bookmatch permet à son utilisateur, en fonction de critères per
 ## Google Drive 
 https://drive.google.com/drive/folders/18Xn_keZcIyG6ocghZPzwIJewXfVGiIqB?usp=sharing
 
+## Configuration du dataset 
+Nous avons obtenu un dataset permettant d'avoir un référencement de critiques faites par des utilisateurs sur des livres. Néanmoins, pour permettre à BookMatch d'être précis, nous avions besoin des genres des livres. Ainsi, nous avons récupéré les informations sur le genre et le sous-genre des livres grâce à un scrapping fait des livres d'Amazon.
+
+Nous avons donc merge les colonnes nécessaires pour avoir notre dataset final.
+
+## Data cleaning 
+On peut remarquer dans la distribution des ratings, un fort nombre de notes égale à O. Ainsi en fonction du nombre d'avis par user, nous avons fait une sélection. 
+Egalement, une problématique qui se posait était pour un même livre des éditions différentes ou plusieurs critiques pour un même livre.
+
+## Modèle de ML utilisé 
+Nous avons dans un premier temps utilisé une régression linéaire pour simplement comprendre la relation entre les caractéristiques utilisateurs/livre et les notes données.
 
 ## Foobar
 
