@@ -6,23 +6,20 @@ En effet, on constate sur ces dernières années que le nombre de lecteur en Fra
 C'est pourquoi Bookmatch permet à son utilisateur, en fonction de critères personnalisés de trouver LE livre qui lui correspond. 
 
 
-
-
-
 ## Google Drive 
 https://drive.google.com/drive/folders/18Xn_keZcIyG6ocghZPzwIJewXfVGiIqB?usp=sharing
 
 ## Configuration du dataset 
-Nous avons obtenu un dataset permettant d'avoir un référencement de critiques faites par des utilisateurs sur des livres. Néanmoins, pour permettre à BookMatch d'être précis, nous avions besoin des genres des livres. Ainsi, nous avons récupéré les informations sur le genre et le sous-genre des livres grâce à un scrapping fait des livres d'Amazon.
-
-Nous avons donc merge les colonnes nécessaires pour avoir notre dataset final.
+Pour obtenir un dataset exploitable, nous avons collecté des critiques d’utilisateurs sur différents livres en utilisant ParseHub, un outil de scraping. Mais pour affiner l’analyse, il nous fallait intégrer les genres et sous-genres des livres. Nous avons donc scrappé Amazon afin d’ajouter ces informations et fusionné les différentes sources pour obtenir un dataset final, enrichi et structuré.
 
 ## Data cleaning 
-On peut remarquer dans la distribution des ratings, un fort nombre de notes égale à O. Ainsi en fonction du nombre d'avis par user, nous avons fait une sélection. 
-Egalement, une problématique qui se posait était pour un même livre des éditions différentes ou plusieurs critiques pour un même livre.
+Une fois le dataset en notre possession, nous avons entrepris un nettoyage des données rigoureux. Nous avons remarqué un nombre anormalement élevé de notes égales à zéro, ce qui pouvait biaiser nos analyses. Afin de limiter cet impact, nous avons filtré ces valeurs en fonction du nombre d’avis par utilisateur. Nous avons également traité le problème des éditions multiples d’un même livre ainsi que les critiques répétées, en consolidant les données pour améliorer leur cohérence.
 
 ## Modèle de ML utilisé 
-Nous avons dans un premier temps utilisé une régression linéaire pour simplement comprendre la relation entre les caractéristiques utilisateurs/livre et les notes données.
+Pour le Machine Learning, nous avons adopté une approche progressive. Nous avons commencé par tester une régression linéaire afin d’évaluer la relation entre les caractéristiques des livres et des utilisateurs ainsi que les notes attribuées. Ce premier modèle nous a aidés à identifier des tendances avant d’explorer des méthodes plus avancées, comme le filtrage collaboratif.
+
+## Finalité 
+Notre objectif final est de rendre Bookmatch accessible à tous. Nous voulons que chaque lecteur puisse découvrir des ouvrages adaptés à ses goûts grâce à une combinaison intelligente d’analyses de critiques, d’informations sur les genres et d’algorithmes de machine learning. Avec ce système, nous espérons transformer le choix d’un livre en une expérience fluide, intuitive et enrichissante.
 
 ## Foobar
 
