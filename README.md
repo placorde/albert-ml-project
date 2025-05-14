@@ -18,5 +18,5 @@ Les modèles développés ici ont été entraînés à partir d’un dataset str
 Les performances globales (MAE, RMSE, R²) sont restées faibles malgré ces approches.  
 Une amélioration du feature engineering est donc nécessaire afin de mieux représenter les données et d’obtenir des prédictions plus pertinentes.
 
-Prochaine étape : retravailler les variables du dataset de base pour enrichir l'information disponible par ligne et améliorer les performances.
+Ainsi nous avons retravailler dans la branche model-test les features.
 
