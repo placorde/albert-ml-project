@@ -75,6 +75,38 @@ Des histogrammes ont été générés pour observer la distribution :
 
 > Le dataset final contient environ **22 400 interactions** propres et enrichies, prêtes pour l’analyse ou le développement de systèmes de recommandation.
 
+## Feature Engineering : Représentation vectorielle des genres
+
+Afin de mieux exploiter les genres littéraires dans un modèle de recommandation ou une analyse sémantique, des embeddings vectoriels ont été générés à l'aide du modèle paraphrase-MiniLM-L6-v2 de sentence-transformers.
+
+---
+
+### 1. Réduction des genres secondaires
+
+Chaque livre pouvant avoir plusieurs genres secondaires, une étape de simplification a été mise en place :
+
+* Extraction de **tous les genres secondaires uniques** dans le dataset.
+* Génération d’un **embedding vectoriel pour chaque genre secondaire**.
+* Pour chaque livre, calcul du **vecteur moyen** de ses genres secondaires.
+* Sélection du **genre secondaire le plus proche** du vecteur moyen (cosine similarity).
+* Création d'une nouvelle colonne : `Genre_Sec_Privege`, représentant le **genre secondaire dominant**.
+
+Cette approche permet de simplifier la représentation tout en conservant la richesse sémantique des genres.
+
+---
+
+### 2. Embedding des genres
+
+Pour préparer les données à des modèles basés sur la similarité ou l’apprentissage supervisé :
+
+* **Genres principaux** et **genres secondaires privilégiés** ont été encodés en vecteurs numériques de taille 384 via `SentenceTransformer`.
+* Création de deux colonnes :
+  * Embedding_Genre_Principa
+  * Embedding_Genre_Secondaire
+
+> Ces vecteurs serviront ultérieurement à des calculs de proximité entre livres, à la création de clusters thématiques, ou à l’alimentation d’un système de recommandation.
+
+---
 
 ## Modèle de ML utilisé 
 Pour le Machine Learning, nous avons adopté une approche progressive. Nous avons commencé par tester une régression linéaire afin d’évaluer la relation entre les caractéristiques des livres et des utilisateurs ainsi que les notes attribuées. Ce premier modèle nous a aidés à identifier des tendances avant d’explorer des méthodes plus avancées, comme le filtrage collaboratif.
