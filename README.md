@@ -8,6 +8,8 @@ C'est pourquoi Bookmatch permet à son utilisateur, en fonction de critères per
 
 ## Google Drive 
 https://drive.google.com/drive/folders/18Xn_keZcIyG6ocghZPzwIJewXfVGiIqB?usp=sharing
+## Lien de présentation
+https://www.canva.com/design/DAGm9HhlnnU/aaZf7GlApQ8pg0cyp5kOpw/view?utm_content=DAGm9HhlnnU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0e27116f10
 
 ## Configuration du dataset 
 Pour obtenir un dataset exploitable, nous avons collecté des critiques d’utilisateurs sur différents livres en utilisant ParseHub, un outil de scraping. Mais pour affiner l’analyse, il nous fallait intégrer les genres et sous-genres des livres. Nous avons donc scrappé Amazon afin d’ajouter ces informations et fusionné les différentes sources pour obtenir un dataset final, enrichi et structuré.
