@@ -106,10 +106,31 @@ Pour préparer les données à des modèles basés sur la similarité ou l’app
 
 > Ces vecteurs serviront ultérieurement à des calculs de proximité entre livres, à la création de clusters thématiques, ou à l’alimentation d’un système de recommandation.
 
----
+## Prédiction de la note utilisateur
 
-## Modèle de ML utilisé 
-Pour le Machine Learning, nous avons adopté une approche progressive. Nous avons commencé par tester une régression linéaire afin d’évaluer la relation entre les caractéristiques des livres et des utilisateurs ainsi que les notes attribuées. Ce premier modèle nous a aidés à identifier des tendances avant d’explorer des méthodes plus avancées, comme le filtrage collaboratif.
+L’objectif est de prédire la note qu’un utilisateur attribuerait à un livre, en combinant :
+- les **embeddings** des genres (principal et secondaire),
+- des **données utilisateur** (âge, ancienneté, etc.).
+
+### 1. Préparation des données
+- Nettoyage des embeddings et conversion en vecteurs.
+- Fusion pondérée : 70% genre principal + 30% genre secondaire.
+- Ajout de variables : âge, ancienneté du livre, encodage utilisateur, tranche d’âge.
+- Création d’une matrice finale `X` avec vecteurs (384 dim) + données tabulaires.
+
+### 2. Entraînement du modèle
+- Modèle : `RandomForestRegressor` optimisé via `GridSearchCV`.
+- Split 80/20 pour l'entraînement/test.
+
+### 3. Résultats
+
+| Métrique   | Valeur  |
+|------------|---------|
+| RMSE       | 1.322   |
+| MAE        | 0.924   |
+| R²         | 0.074   |
+| MAPE       | 14.56%  |
+
 
 ## Finalité 
 Notre objectif final est de rendre Bookmatch accessible à tous. Nous voulons que chaque lecteur puisse découvrir des ouvrages adaptés à ses goûts grâce à une combinaison intelligente d’analyses de critiques, d’informations sur les genres et d’algorithmes de machine learning. Avec ce système, nous espérons transformer le choix d’un livre en une expérience fluide, intuitive et enrichissante.
