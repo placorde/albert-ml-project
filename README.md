@@ -106,6 +106,20 @@ Pour préparer les données à des modèles basés sur la similarité ou l’app
 
 > Ces vecteurs serviront ultérieurement à des calculs de proximité entre livres, à la création de clusters thématiques, ou à l’alimentation d’un système de recommandation.
 
+# Réduction de dimension par PCA sur les embeddings
+
+Pour optimiser la représentation vectorielle des genres littéraires tout en réduisant la complexité, une réduction de dimension par PCA a été réalisée :
+
+- **Fusion pondérée** des embeddings de genre principal et secondaire (70% / 30%).
+- Construction d'une **matrice de vecteurs combinés**.
+- Application de la PCA pour analyser la **variance expliquée cumulée**.
+- Détermination du **nombre optimal de composantes** pour capturer 90% de la variance.
+- Réduction finale des vecteurs à ce nombre de dimensions.
+- Intégration des nouvelles composantes principales (PC1, PC2, ...) dans le DataFrame.
+
+Cette réduction permet d'alléger les calculs tout en conservant l'information essentielle pour les modèles de recommandation.
+
+
 ## Prédiction de la note utilisateur
 
 L’objectif est de prédire la note qu’un utilisateur attribuerait à un livre, en combinant :
@@ -187,44 +201,41 @@ Les meilleurs paramètres trouvés via GridSearchCV sont les suivants :
 ### Interprétation des résultats
 - Le modèle a montré des performances correctes mais peut être amélioré. L'erreur moyenne absolue est proche de 1 point, mais le coefficient de détermination (R²) reste faible, indiquant qu'il existe encore de la marge pour améliorer la précision du modèle.
 
+  
+### Interface 
+## Utilisation de Streamlit 
+
+
+
 
 ## Finalité 
 Notre objectif final est de rendre Bookmatch accessible à tous. Nous voulons que chaque lecteur puisse découvrir des ouvrages adaptés à ses goûts grâce à une combinaison intelligente d’analyses de critiques, d’informations sur les genres et d’algorithmes de machine learning. Avec ce système, nous espérons transformer le choix d’un livre en une expérience fluide, intuitive et enrichissante.
 
-## Foobar
+#  Interface utilisateur - Recommandation avec Streamlit
 
-Foobar is a Python library for dealing with word pluralization.
+Une interface a été développée avec **Streamlit** pour permettre aux utilisateurs d’obtenir des recommandations de livres personnalisées.
 
-## Installation
+##  Fonctionnalités
+- Sélection de l'âge de l'utilisateur.
+- Choix du genre principal préféré.
+- Choix du ou des genres secondaires.
+- Génération d'une liste de recommandations basée sur les préférences saisies.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+## Principe de fonctionnement
 
-```bash
-pip install foobar
-```
+### Préparation des entrées utilisateur :
+- Les genres sélectionnés sont convertis en vecteurs d'**embeddings** via *sentence-transformers*.
+- L'âge et le groupe d'âge sont pris en compte pour enrichir le profil utilisateur.
 
-## Usage
+### Construction du vecteur utilisateur :
+- Fusion des embeddings des genres avec les données tabulaires (âge, groupe d’âge...).
+- Génération d’un vecteur de caractéristiques similaire à ceux utilisés lors de l’entraînement du modèle.
 
-```python
-import foobar
+### Prédiction et filtrage :
+- Le vecteur est passé au modèle **XGBoost** (ou autre modèle entraîné).
+- Une note prédite est générée pour chaque livre du dataset.
+- Les livres sont triés par note pour afficher les meilleures suggestions.
 
-# returns 'words'
-foobar.pluralize('word')
+### Affichage des recommandations :
+- Les résultats sont présentés dans l’interface avec les informations clés : **titre, auteur, année**, etc.
 
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
