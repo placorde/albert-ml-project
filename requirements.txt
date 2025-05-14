@@ -1,0 +1,14 @@
+﻿pandas
+os
+joblib
+numpy
+matplotlib
+seaborn
+streamlit
+scikit-learn
+sentence-transformers
+scipy
+scikit-learn
+statsmodels
+tqdm
+time
