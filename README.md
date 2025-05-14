@@ -101,7 +101,7 @@ Pour préparer les données à des modèles basés sur la similarité ou l’app
 
 * **Genres principaux** et **genres secondaires privilégiés** ont été encodés en vecteurs numériques de taille 384 via `SentenceTransformer`.
 * Création de deux colonnes :
-  * Embedding_Genre_Principa
+  * Embedding_Genre_Principal
   * Embedding_Genre_Secondaire
 
 > Ces vecteurs serviront ultérieurement à des calculs de proximité entre livres, à la création de clusters thématiques, ou à l’alimentation d’un système de recommandation.
@@ -155,10 +155,10 @@ L’objectif est de prédire la note qu’un utilisateur attribuerait à un livr
 
 ### 3. Évaluation du modèle
 
-- **RMSE** (
+- **RMSE** 
 - **MAE** 
-- **R² Score** .
-- **MAPE** .
+- **R² Score** 
+- **MAPE** 
 
 ### Résultats observés
 - L’erreur moyenne reste raisonnable mais le **R²** suggère qu’il reste des marges d’amélioration.
