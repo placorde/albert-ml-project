@@ -150,6 +150,43 @@ L’objectif est de prédire la note qu’un utilisateur attribuerait à un livr
 - L’erreur moyenne reste raisonnable mais le **R²** suggère qu’il reste des marges d’amélioration.
 - Ce modèle peut servir de **baseline fiable** dans le système de recommandation.
 
+## **Test avec LightGBM**
+
+Dans cette étape, nous avons utilisé le modèle **LightGBM (Light Gradient Boosting Machine)**, un algorithme de machine learning efficace pour les tâches de régression. Voici les étapes suivies :
+
+1. **Préparation des données :**
+   - Les données ont été séparées en ensembles d'entraînement (80%) et de test (20%) à l'aide de `train_test_split`.
+
+2. **Modélisation :**
+   - Un modèle **LGBMRegressor** a été défini pour effectuer une régression, avec des paramètres d'objectif réglés sur "regression" et une graine aléatoire pour la reproductibilité.
+   
+3. **Optimisation des hyperparamètres :**
+   - Un **GridSearchCV** a été utilisé pour tester plusieurs combinaisons de paramètres, notamment :
+     - Nombre d'estimateurs (`n_estimators`)
+     - Taux d'apprentissage (`learning_rate`)
+     - Profondeur maximale de l'arbre (`max_depth`)
+     - Nombre de feuilles (`num_leaves`)
+     - Sous-échantillonnage (`subsample`)
+
+4. **Prédiction et évaluation :**
+   - Le modèle a été évalué sur les données de test en calculant plusieurs métriques :
+     - **RMSE (Root Mean Squared Error)** : 1.329
+     - **MAE (Mean Absolute Error)** : 0.940
+     - **R2 Score** : 0.065
+     - **MAPE (Mean Absolute Percentage Error)** : 14.81%
+
+### Résultats
+
+Les meilleurs paramètres trouvés via GridSearchCV sont les suivants :
+- `n_estimators`: 200
+- `learning_rate`: 0.1
+- `max_depth`: 10
+- `num_leaves`: 50
+- `subsample`: 1.0
+
+### Interprétation des résultats
+- Le modèle a montré des performances correctes mais peut être amélioré. L'erreur moyenne absolue est proche de 1 point, mais le coefficient de détermination (R²) reste faible, indiquant qu'il existe encore de la marge pour améliorer la précision du modèle.
+
 
 ## Finalité 
 Notre objectif final est de rendre Bookmatch accessible à tous. Nous voulons que chaque lecteur puisse découvrir des ouvrages adaptés à ses goûts grâce à une combinaison intelligente d’analyses de critiques, d’informations sur les genres et d’algorithmes de machine learning. Avec ce système, nous espérons transformer le choix d’un livre en une expérience fluide, intuitive et enrichissante.
