@@ -132,6 +132,25 @@ L’objectif est de prédire la note qu’un utilisateur attribuerait à un livr
 | MAPE       | 14.56%  |
 
 
+## Entraînement du modèle avec XGBoost
+
+- Utilisation du modèle `XGBRegressor` (XGBoost) pour la prédiction des notes (`Book-Rating`)
+- Optimisation via `GridSearchCV` :
+  - `max_depth`, `learning_rate`, `n_estimators`, `subsample`, etc.
+- Séparation des données en jeu d’entraînement et de test via `train_test_split`.
+
+### 3. Évaluation du modèle
+
+- **RMSE** (
+- **MAE** 
+- **R² Score** .
+- **MAPE** .
+
+### Résultats observés
+- L’erreur moyenne reste raisonnable mais le **R²** suggère qu’il reste des marges d’amélioration.
+- Ce modèle peut servir de **baseline fiable** dans le système de recommandation.
+
+
 ## Finalité 
 Notre objectif final est de rendre Bookmatch accessible à tous. Nous voulons que chaque lecteur puisse découvrir des ouvrages adaptés à ses goûts grâce à une combinaison intelligente d’analyses de critiques, d’informations sur les genres et d’algorithmes de machine learning. Avec ce système, nous espérons transformer le choix d’un livre en une expérience fluide, intuitive et enrichissante.
 
